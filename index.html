@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双色球 번호 추천기</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <h1>双色球 번호 추천기</h1>
+      <p>빨간 공 6개(1-33), 파란 공 1개(1-16)를 규칙에 맞게 무작위 추천합니다. 고정 번호와 제외 번호를 섞어 원하는 방식으로 조합을 만들 수 있습니다.</p>
+    </section>
+
+    <section class="content">
+      <aside class="card controls">
+        <div>
+          <h2>추천 조건</h2>
+          <p class="summary">쉼표, 공백, 줄바꿈 모두 입력 가능합니다. 잘못된 번호나 범위를 벗어난 값은 자동으로 무시됩니다.</p>
+        </div>
+
+        <div class="field">
+          <label for="ticketCount">생성할 조합 수</label>
+          <input id="ticketCount" type="number" min="1" max="20" value="5">
+        </div>
+
+        <div class="field">
+          <label for="fixedReds">고정할 빨간 공</label>
+          <textarea id="fixedReds" placeholder="예: 3, 8, 12"></textarea>
+          <p class="hint">최대 6개까지 반영됩니다.</p>
+        </div>
+
+        <div class="field">
+          <label for="excludedReds">제외할 빨간 공</label>
+          <textarea id="excludedReds" placeholder="예: 1, 2, 33"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="fixedBlue">고정할 파란 공</label>
+          <input id="fixedBlue" type="text" placeholder="예: 9">
+        </div>
+
+        <div class="field">
+          <label for="excludedBlues">제외할 파란 공</label>
+          <textarea id="excludedBlues" placeholder="예: 4, 7"></textarea>
+        </div>
+
+        <div class="actions">
+          <button id="generateBtn" class="primary" type="button">번호 추천하기</button>
+          <button id="randomPresetBtn" class="secondary" type="button">랜덤 조건 채우기</button>
+          <button id="resetBtn" class="secondary" type="button">초기화</button>
+        </div>
+
+        <p id="status" class="footnote">기본값으로 5개 조합을 생성합니다.</p>
+      </aside>
+
+      <section class="card">
+        <div class="result-header">
+          <div>
+            <h2>추천 결과</h2>
+            <p class="summary">생성된 번호는 오름차순 정렬된 빨간 공 6개와 파란 공 1개로 표시됩니다.</p>
+          </div>
+          <span id="drawTime" class="pill"></span>
+        </div>
+        <div id="tickets" class="tickets">
+          <div class="empty">아직 생성된 조합이 없습니다. 왼쪽에서 조건을 입력한 뒤 번호 추천을 실행하세요.</div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
